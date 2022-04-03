@@ -9,9 +9,9 @@ class Morishita:
         self.data = data
         self.grid = self.calculate_grid(grid_size_x, grid_size_y)
 
+    # Вычисление области
     def calculate_grid(self, grid_size_x, grid_size_y):
         xmin, ymin, xmax, ymax = self.data.total_bounds
-        print(xmax - xmin, ymax-ymin)
         width = grid_size_x
         height = grid_size_y
         rows = int(abs(np.ceil((ymax - ymin) / height)))
@@ -34,11 +34,13 @@ class Morishita:
 
         return gpd.GeoDataFrame({'geometry': polygons})
 
+    #  визуализация на графике
     def visualize(self):
         ax = self.grid.plot(edgecolor='red', color='white')
         self.data.plot(color='blue', ax=ax)
         plt.show()
 
+    # расчёт индекса Моришита
     def calculate_index(self):
         Q = self.grid.count().geometry
         N = self.data.count().geometry
