@@ -11,11 +11,7 @@ class Morishita:
 
     def calculate_grid(self, grid_size_x, grid_size_y):
         xmin, ymin, xmax, ymax = self.data.total_bounds
-        # смещаяем сетку для избежания наложения точки на границу ячейки
-        xmin -= 1
-        ymin -= 1
-        xmax += 1
-        ymax += 1
+        print(xmax - xmin, ymax-ymin)
         width = grid_size_x
         height = grid_size_y
         rows = int(abs(np.ceil((ymax - ymin) / height)))
@@ -50,8 +46,9 @@ class Morishita:
         for cell in self.grid.geometry:
             count = 0
             for point in self.data.geometry:
-                if cell.contains(point):
+                if cell.intersects(point):
                     count = count + 1
+
             sum_ni = sum_ni + (count * (count - 1))
 
         return Q * (sum_ni / (N * (N - 1)))
