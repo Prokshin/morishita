@@ -1,7 +1,8 @@
 import geopandas as gpd
 
-from morishito import Morishito
+from morishita import Morishita
 
 points = gpd.read_file('./data.geojson')
-gg = Morishito(points, 10, 10)
+gg = Morishita(points, 10, 10)
+print(gg.calculate_index())
 gg.visualize()

@@ -4,7 +4,7 @@ from shapely.geometry import Point, Polygon
 import geopandas as gpd
 
 
-class Morishito:
+class Morishita:
     def __init__(self, data, grid_size_x, grid_size_y):
         self.data = data
         self.grid = self.calculate_grid(grid_size_x, grid_size_y)
