@@ -5,8 +5,8 @@ from morishita import Morishita
 points = gpd.read_file('./data.geojson')
 
 morishita = Morishita(points)
-morishita.calculate_diagram(10, 10, 360, 360, 36)
+morishita.calculate_diagram(20, 20, 200, 200, 100)
 morishita_diagram_plot = morishita.get_diagram_plot()
 
 # morishita_diagram_plot.show()
-morishita_diagram_plot.show()
+morishita_diagram_plot.savefig("diagram")
