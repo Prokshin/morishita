@@ -29,10 +29,9 @@ class Morishita:
     def get_diagram_plot(self):
         fig, ax = plt.subplots()
         ax.plot(self.diagram.x, self.diagram.y, markersize=5, marker='.')
-        ax.set_xticklabels([])
         ax.grid(color='gray', linestyle='-', linewidth=0.3)
         plt.ylabel('Индекс Моришита')
-        plt.xlabel('Размер ячейки')
+        plt.xlabel('Площадь ячейки')
         return plt
 
     # Вычисление области
@@ -73,12 +72,12 @@ class Morishita:
         step_y = (end_size_y - start_size_y) / count
         temp_y = start_size_y
         temp_x = start_size_x
-        for x in range(count + 1):
+        for x in range(count):
             temp_x = temp_x + step_x
             temp_y = temp_y + step_y
             res = self.calculate_index(temp_x, temp_y)
             arr.append(res)
-            arr_x.append(x)
+            arr_x.append(temp_x * temp_y)
 
         self.diagram = Diagram(arr_x, arr)
 
